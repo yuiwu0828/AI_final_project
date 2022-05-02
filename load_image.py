@@ -22,8 +22,9 @@ def load_image(dataPath):
         ID = ID + 1
 
     return dataset
-
+"""
 if __name__ == '__main__':
     dataPath = 'C:/Users/User/Desktop/final_project/used/Train'
     load_image(dataPath)
     print('done')
+    """
