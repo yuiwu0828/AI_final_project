@@ -83,14 +83,10 @@ def load_image(dataPath):
             dataset.append(img_to_array(img))
             labels.append(ID)
             count = count + 1
-            if count >= 1000:
-                break
         ID = ID + 1
-        if(ID >= 10):
-            break
     dataset = np.array(dataset, dtype='float32')/255.0
     labels = np.array(labels)
-    labels = to_categorical(labels, num_classes=10)
+    labels = to_categorical(labels, num_classes=59)
     return dataset, answer, labels
 
 
@@ -98,7 +94,7 @@ def show_train_history(train_history, train, validation):
     plt.plot(train_history.history[train])
     plt.plot(train_history.history[validation])
     plt.title('Train history')
-    plt.ylabel(train)
+    plt.ylabel('train')
     plt.xlabel('Epoch')
     legendLoc = 'lower right' if(train=='acc') else 'upper right'
     plt.legend(['train', 'validation'], loc=legendLoc)
