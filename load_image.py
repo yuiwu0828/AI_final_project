@@ -8,8 +8,9 @@ os.chdir(sys.path[0])
 
 def load_image(dataPath):
     dataset = []
-    answer = {}
+    # answer = {}
     labels = []
+    """
     explain = {
         '0':'Speed limit (20 km/h)',
         '1':'Speed limit (30 km/h)', 
@@ -71,12 +72,13 @@ def load_image(dataPath):
         '96':'',
         '97':'',
     }
+    """
     folder = os.listdir(dataPath)
     ID = 0
     for folder_name in folder:
         files = os.listdir(dataPath + '/' + folder_name)
         count = 0
-        answer[ID] = explain[folder_name]
+        # answer[ID] = explain[folder_name]
         for name in files:
             img = cv2.imread(dataPath + '/' + folder_name + '/' + name)
             img = cv2.resize(img, (36, 36))
@@ -86,8 +88,9 @@ def load_image(dataPath):
         ID = ID + 1
     dataset = np.array(dataset, dtype='float32')/255.0
     labels = np.array(labels)
-    labels = to_categorical(labels, num_classes=59)
-    return dataset, answer, labels
+    labels = to_categorical(labels, num_classes=85)
+    # return dataset, answer, labels
+    return dataset, labels
 
 
 def show_train_history(train_history, train, validation):

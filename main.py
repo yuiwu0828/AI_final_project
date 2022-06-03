@@ -11,21 +11,23 @@ from load_image import load_image, show_train_history
 
 
 dataPath = 'C:/Users/User/Desktop/final_project/used/Train'
-dataset, answer, labels = load_image(dataPath)
+# dataset, answer, labels = load_image(dataPath)
+dataset, labels = load_image(dataPath)
+
 x_train, x_valid, y_train, y_valid = train_test_split(dataset, labels, test_size=0.2, random_state=42)
 
 model = Sequential()
 model.add(Conv2D(filters=32, kernel_size=(5, 5), padding='same', input_shape=(36, 36, 3), activation='relu'))
-# model.add(Dropout(rate=0.25))
+model.add(Dropout(rate=0.25))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Conv2D(filters=64, kernel_size=(5, 5), padding='same', activation='relu'))
-# model.add(Dropout(rate=0.25))
+model.add(Dropout(rate=0.25))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
-# model.add(Dropout(rate=0.25))
+model.add(Dropout(rate=0.25))
 model.add(Dense(512, activation='relu'))
-#  model.add(Dropout(rate=0.25))
-model.add(Dense(59, activation='softmax'))
+model.add(Dropout(rate=0.25))
+model.add(Dense(85, activation='softmax'))
 model.summary()
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
