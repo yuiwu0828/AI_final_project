@@ -88,7 +88,7 @@ def load_image(dataPath):
         ID = ID + 1
     dataset = np.array(dataset, dtype='float32')/255.0
     labels = np.array(labels)
-    labels = to_categorical(labels, num_classes=85)
+    labels = to_categorical(labels, num_classes=86)
     # return dataset, answer, labels
     return dataset, labels
 
